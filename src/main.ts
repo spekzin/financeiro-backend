@@ -1,21 +1,22 @@
-// main.ts
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { ExpressAdapter } from '@nestjs/platform-express';
+import * as express from 'express';
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+export async function createNestServer() {
+  const expressApp = express();
+  const app = await NestFactory.create(AppModule, new ExpressAdapter(expressApp));
 
-  // CORS direto, sem condição
   app.enableCors({
-    origin: [
-      'https://sistema-financeiro-bundle.vercel.app',
-      'http://localhost:4200'
-    ],
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    allowedHeaders: '*',
-    credentials: true
+    origin: ['https://sistema-financeiro-bundle.vercel.app'],
+    credentials: true,
   });
 
-  await app.listen(process.env.PORT || 3000);
+  await app.init();
+  return expressApp;
 }
-bootstrap();
+
+// Rodar localmente
+if (!process.env.VERCEL) {
+  createNestServer().then(app => app.listen(3000));
+}

@@ -7,9 +7,13 @@ export async function createNestServer() {
   const expressApp = express();
   const app = await NestFactory.create(AppModule, new ExpressAdapter(expressApp));
 
+  // Configuração CORS mais abrangente
   app.enableCors({
-    origin: ['https://sistema-financeiro-bundle.vercel.app'],
+    origin: true, // Permite qualquer origem
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
     credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
+    exposedHeaders: ['Content-Disposition'],
   });
 
   await app.init();

@@ -9,4 +9,3 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
   }
   return cachedServer(req, res);
 }
-

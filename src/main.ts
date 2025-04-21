@@ -16,7 +16,6 @@ export async function createNestServer() {
   return expressApp;
 }
 
-// Rodar localmente
 if (!process.env.VERCEL) {
   createNestServer().then(app => app.listen(3000));
 }

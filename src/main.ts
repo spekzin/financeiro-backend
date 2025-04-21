@@ -18,7 +18,7 @@ async function bootstrap()  {
   } else {
     // Ambiente de produção - mais restritivo
     const allowedOrigins = [
-      'https://sistema-financeiro-bundle.vercel.app/',
+      'https://sistema-financeiro-bundle.vercel.app',
       'http://localhost:4200'
     ];
     

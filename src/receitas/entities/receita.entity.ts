@@ -8,6 +8,9 @@ export class Receita {
   @Column({ length: 15 })
   nome: string;
 
+  @Column({ type: 'date', nullable: true }) // ← alterado aqui
+  data: string;
+
   @Column()
   tipo: string;
 

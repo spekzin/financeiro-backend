@@ -12,6 +12,9 @@ import { DespesasModule } from './despesas/despesas.module';
 import { Despesa } from './despesas/entities/despesa.entity';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { Lancamento } from './lancamentos/entities/lancamento.entity';
+import { UsersModule } from './users/users.module';
+import { User } from './users/entities/user.entity';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -19,8 +22,8 @@ import { Lancamento } from './lancamentos/entities/lancamento.entity';
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'financeiro.db',
-      entities: [Cartao, Parcelamento, Receita, Categoria, Despesa, Lancamento],
-      synchronize: true, // Em produção, use migrações!
+      entities: [Cartao, Parcelamento, Receita, Categoria, Despesa, Lancamento, User],
+      synchronize: true,
     }),
     CartoesModule,
     ParcelamentosModule,
@@ -28,6 +31,8 @@ import { Lancamento } from './lancamentos/entities/lancamento.entity';
     CategoriasModule,
     DespesasModule,
     LancamentosModule,
+    UsersModule,
+    AuthModule
   ],
 })
 export class AppModule {}

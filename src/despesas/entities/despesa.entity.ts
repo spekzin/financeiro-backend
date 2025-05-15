@@ -1,5 +1,11 @@
-// despesas.entity.ts
-import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+9; // despesas.entity.ts
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity('despesas')
 export class Despesa {
@@ -41,4 +47,7 @@ export class Despesa {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @Column({ nullable: true })
+  data: string;
 }

@@ -15,6 +15,8 @@ import { Lancamento } from './lancamentos/entities/lancamento.entity';
 import { UsersModule } from './users/users.module';
 import { User } from './users/entities/user.entity';
 import { AuthModule } from './auth/auth.module';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { Dashboard } from './dashboard/entities/dashboard.entity';
 
 
 @Module({
@@ -22,7 +24,7 @@ import { AuthModule } from './auth/auth.module';
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'financeiro.db',
-      entities: [Cartao, Parcelamento, Receita, Categoria, Despesa, Lancamento, User],
+      entities: [Cartao, Parcelamento, Receita, Categoria, Despesa, Lancamento, User, Dashboard],
       synchronize: true,
     }),
     CartoesModule,
@@ -32,7 +34,8 @@ import { AuthModule } from './auth/auth.module';
     DespesasModule,
     LancamentosModule,
     UsersModule,
-    AuthModule
+    AuthModule,
+    DashboardModule
   ],
 })
 export class AppModule {}

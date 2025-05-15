@@ -16,4 +16,7 @@ export class Lancamento {
 
   @Column({ type: 'real' })
   valor: number;
+
+  @Column({ nullable: true })
+  categoria: string;
 }

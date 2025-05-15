@@ -28,4 +28,13 @@ export class Parcelamento {
 
   @Column()
   fim: string; // formato MM/AA
+
+  @Column({ nullable: true })
+  mesAnoInicio: string;
+
+  @Column({ nullable: true })
+  mesAnoFim: string;
+
+  @Column({ nullable: true })
+  categoria: string;
 }
